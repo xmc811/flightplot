@@ -5,12 +5,19 @@
 \alias{sample_trips}
 \title{Sample Trip Dataset}
 \format{
-A two-column dataframe with start and end airports of flights.
+Dataframe
+\describe{
+\item{Departure}{IATA code for departure airports}
+\item{Arrival}{IATA code for arrival airports.}
+}
 }
 \usage{
 sample_trips
 }
 \description{
 A two-column dataframe with start and end airports of flights. The dataframe can be readily used as input for the main plot function.
+}
+\examples{
+  sample_trips
 }
 \keyword{datasets}
