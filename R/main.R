@@ -20,9 +20,10 @@
 #' @param times_as_thickness A logical value - whether the times of flights are used as aestheic mappings for the thickness of flight paths. Default value is \code{TRUE}.
 #' @return A plot
 #' @importFrom magrittr %<>%
-#' @importFrom dplyr group_by summarise n ungroup inner_join mutate
-#' @importFrom ggplot2 ggplot geom_sf theme geom_point scale_color_manual scale_size_identity scale_x_continuous scale_y_continuous
-#' @importFrom ggreprel geom_text_repel
+#' @importFrom dplyr group_by summarise n ungroup inner_join mutate %>% select
+#' @importFrom ggplot2 ggplot geom_sf theme geom_point scale_color_manual scale_size_identity scale_x_continuous scale_y_continuous element_rect aes
+#' @importFrom ggrepel geom_text_repel
+#' @importFrom rlang .data
 #' @examples
 #' \dontrun{
 #' plot_flights(sample_trips)
@@ -49,17 +50,21 @@ plot_flights <- function(trips,
 
     trips %<>%
         arrange_path() %>%
-        group_by(Departure, Arrival) %>%
+        group_by(.data$Departure, .data$Arrival) %>%
         summarise(n = n()) %>%
         ungroup()
 
     trips %<>%
         inner_join(airports, by = c("Departure" = "IATA")) %>%
         inner_join(airports, by = c("Arrival" = "IATA")) %>%
-        mutate(International = ifelse(Country.x == Country.y, FALSE, TRUE))
+        mutate(International = ifelse(.data$Country.x == .data$Country.y, FALSE, TRUE))
 
-    routes <- geosphere::gcIntermediate(p1 = select(trips, Longtitude.x, Latitude.x),
-                                        p2 = select(trips, Longtitude.y, Latitude.y),
+    routes <- geosphere::gcIntermediate(p1 = select(trips,
+                                                    .data$Longtitude.x,
+                                                    .data$Latitude.x),
+                                        p2 = select(trips,
+                                                    .data$Longtitude.y,
+                                                    .data$Latitude.y),
                                         n = 500,
                                         breakAtDateLine = TRUE,
                                         addStartEnd = TRUE,
@@ -94,11 +99,17 @@ plot_flights <- function(trips,
     ggplot() +
         geom_sf(data = world, fill = land_color, size = 0) +
         theme(panel.background = element_rect(fill = water_color)) +
-        geom_sf(data = st_as_sf(routes),
-                mapping = aes(size = n/2, color = factor(int)),
+        geom_sf(data = sf::st_as_sf(routes),
+                mapping = aes(size = n/2,
+                              color = factor(.data$int)),
                 alpha = 0.5) +
-        geom_point(data = my_airports, aes(x = Longtitude, y = Latitude)) +
-        geom_text_repel(data = my_airports, aes(x = Longtitude, y = Latitude, label = IATA)) +
+        geom_point(data = my_airports,
+                   aes(x = .data$Longtitude,
+                       y = .data$Latitude)) +
+        geom_text_repel(data = my_airports,
+                        aes(x = .data$Longtitude,
+                            y = .data$Latitude,
+                            label = .data$IATA)) +
         scale_color_manual(values = c(dom_color,
                                       int_color)) +
         scale_size_identity() +

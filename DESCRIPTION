@@ -17,9 +17,9 @@ Imports:
         ggplot2,
         ggrepel,
         magrittr,
+        rlang,
         sf,
-        tibble,
-        rlang
+        tibble
 Collate:
         "data.R"
         "globals.R"
