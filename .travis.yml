@@ -2,6 +2,10 @@ language: R
 cache: packages
 sudo: required
 dist: trusty
+os:
+  - linux
+  - osx
+  - windows
 addons:
   apt:
     packages:
