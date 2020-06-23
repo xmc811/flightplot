@@ -45,3 +45,5 @@ To call the main plot function:
 plot_flights(sample_trips)
 ```
 
+<img src=https://github.com/xmc811/flightplot/blob/master/images/plot_1.png/>
+
