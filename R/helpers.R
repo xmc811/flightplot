@@ -1,4 +1,6 @@
 
+# The Helper Functions Called by the Main Function
+
 arrange_path <- function(df) {
 
     for (i in seq_along(1:nrow(df))) {

@@ -1,11 +1,30 @@
 Package: flightplot
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Plotting Flight Paths on Maps
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: c(
+        person("Mingchu", "Xu", email = "mxu.china@gmail.com", role = c("aut", "cre"))
+        )
+Maintainer: Mingchu Xu <mxu.china@gmail.com>
+Depends: 
+        R (>= 3.6)
+Description: Provides functionality to plot airplane flight paths on maps. The plotted flight paths follow the great circle of the Earth.
+License: GPL-3 | file LICENSE
+LazyData: TRUE
+Imports:
+        dplyr,
+        geosphere,
+        ggplot2,
+        ggrepel,
+        magrittr,
+        sf,
+        tibble,
+        rlang
+Collate:
+        "data.R"
+        "globals.R"
+        "helpers.R"
+        "main.R"
+Suggests:
+RoxygenNote: 7.1.0
 Encoding: UTF-8
-LazyData: true

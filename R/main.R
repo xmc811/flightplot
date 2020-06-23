@@ -1,4 +1,34 @@
 
+# The Main Plotting Function
+
+#' The main function to plot flight paths
+#'
+#' The \code{plot_flights} function use 'ggplot2' to plot flight paths on a world map. The flight path follow the great circle of the Earth, which is computed by 'geosphere'. The function also provides extended functionalities including coloring and cropping. \cr
+#' Since 'ggplot2' is used, additional plotting parameters can be easily added to the result.
+#'
+#' @param trips A two-column dataframe - The start and end airports of flights. The first column should be the start airports, and the second column the end airports. The airport value should be IATA airport code. The column names can be any valid names.
+#' @param crop A logical value or a string - Whether the map should be cropped or not and by which preset the map is cropped. If \code{FALSE}, the whole world map is plotted; if \code{TRUE}, the map will be cropped based on the airport coordinates. It also accepts certain strings as presets: \cr
+#' \code{"NA"}: North America. \cr
+#' \code{"48States"}: The contiguous United States. \cr
+#' The default value is \code{TRUE}.
+#'
+#' @param land_color A string - the color used for land. Default value is \code{"#f6e8c3"}.
+#' @param water_color A string - the color used for earth. Default value is \code{"aliceblue"}.
+#' @param dom_color A string - the color used for domestic flights. Default value is \code{"#3288bd"}.
+#' @param int_color A string - the color used for international flights. Default value is \code{"#d53e4f"}.
+#' @param linetype A string - the linetype used for flight paths. Default value is \code{"solid"}.
+#' @param times_as_thickness A logical value - whether the times of flights are used as aestheic mappings for the thickness of flight paths. Default value is \code{TRUE}.
+#' @return A plot
+#' @importFrom magrittr %<>%
+#' @importFrom dplyr group_by summarise n ungroup inner_join mutate
+#' @importFrom ggplot2 ggplot geom_sf theme geom_point scale_color_manual scale_size_identity scale_x_continuous scale_y_continuous
+#' @importFrom ggreprel geom_text_repel
+#' @examples
+#' \dontrun{
+#' plot_flights(sample_trips)
+#' }
+#' @export
+
 plot_flights <- function(trips,
                          crop = TRUE,
                          land_color = "#f6e8c3",
@@ -11,8 +41,8 @@ plot_flights <- function(trips,
 
     colnames(trips) <- c("Departure", "Arrival")
 
-    my_airports <- tibble(IATA = unique(c(trips$Departure,
-                                          trips$Arrival)))
+    my_airports <- tibble::tibble(IATA = unique(c(trips$Departure,
+                                                  trips$Arrival)))
     my_airports <- inner_join(my_airports,
                               airports,
                               by = "IATA")
@@ -28,15 +58,15 @@ plot_flights <- function(trips,
         inner_join(airports, by = c("Arrival" = "IATA")) %>%
         mutate(International = ifelse(Country.x == Country.y, FALSE, TRUE))
 
-    routes <- gcIntermediate(p1 = select(trips, Longtitude.x, Latitude.x),
-                             p2 = select(trips, Longtitude.y, Latitude.y),
-                             n = 500,
-                             breakAtDateLine = TRUE,
-                             addStartEnd = TRUE,
-                             sp = TRUE)
+    routes <- geosphere::gcIntermediate(p1 = select(trips, Longtitude.x, Latitude.x),
+                                        p2 = select(trips, Longtitude.y, Latitude.y),
+                                        n = 500,
+                                        breakAtDateLine = TRUE,
+                                        addStartEnd = TRUE,
+                                        sp = TRUE)
 
     routes %<>%
-        st_as_sf() %>%
+        sf::st_as_sf() %>%
         mutate(n = trips$n,
                int = trips$International)
 
@@ -79,3 +109,4 @@ plot_flights <- function(trips,
         theme(legend.position = "none")
 
 }
+
