@@ -1,6 +1,19 @@
 
 # The Helper Functions Called by the Main Function
 
+#' Helper function to reorder the values in the input flight dataframe.
+#'
+#'@param df A two-column dataframe - The start and end airports of flights.
+#'
+#'@return A two-column dataframe
+#'
+#' @examples
+#' \dontrun{
+#' arrange_path(sample_trips)
+#' }
+#'
+#' @export
+
 arrange_path <- function(df) {
 
     for (i in seq_along(1:nrow(df))) {
@@ -13,6 +26,27 @@ arrange_path <- function(df) {
     }
     return(df)
 }
+
+
+#' Helper function to calculate the coordinate limits of map border
+#'
+#' Since the world map is huge, and flights are usually drawn in a relatively\cr
+#' small area, the map needs to be cropped based on the coordinates of airports\cr
+#' used. This function generates the coordinate limits of the cropped map.
+#'
+#'@param v A double numeric vector - vector of longtitudes/latitudes.
+#'@param type A string - "long" or "lat". It indicates whether longtitudes or latitudes are input.
+#'@param padding_ratio A double number - 0 to 1. The padding ratio is defined as\cr
+#'padding / (maximum - minimum)
+#'
+#'@return A two-column dataframe
+#'
+#' @examples
+#' \dontrun{
+#' arrange_path(sample_trips)
+#' }
+#'
+#' @export
 
 
 get_map_border <- function(v,

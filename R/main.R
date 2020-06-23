@@ -11,23 +11,26 @@
 #' \code{"NA"}: North America. \cr
 #' \code{"48States"}: The contiguous United States. \cr
 #' The default value is \code{TRUE}.
-#'
 #' @param land_color A string - the color used for land. Default value is \code{"#f6e8c3"}.
 #' @param water_color A string - the color used for earth. Default value is \code{"aliceblue"}.
 #' @param dom_color A string - the color used for domestic flights. Default value is \code{"#3288bd"}.
 #' @param int_color A string - the color used for international flights. Default value is \code{"#d53e4f"}.
 #' @param linetype A string - the linetype used for flight paths. Default value is \code{"solid"}.
 #' @param times_as_thickness A logical value - whether the times of flights are used as aestheic mappings for the thickness of flight paths. Default value is \code{TRUE}.
+#'
 #' @return A plot
+#'
 #' @importFrom magrittr %<>%
 #' @importFrom dplyr group_by summarise n ungroup inner_join mutate %>% select
 #' @importFrom ggplot2 ggplot geom_sf theme geom_point scale_color_manual scale_size_identity scale_x_continuous scale_y_continuous element_rect aes
 #' @importFrom ggrepel geom_text_repel
 #' @importFrom rlang .data
+#'
 #' @examples
 #' \dontrun{
 #' plot_flights(sample_trips)
 #' }
+#'
 #' @export
 
 plot_flights <- function(trips,
@@ -37,8 +40,7 @@ plot_flights <- function(trips,
                          dom_color = "#3288bd",
                          int_color = "#d53e4f",
                          linetype = "solid",
-                         times_as_thickness = TRUE
-) {
+                         times_as_thickness = TRUE) {
 
     colnames(trips) <- c("Departure", "Arrival")
 

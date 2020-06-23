@@ -46,4 +46,5 @@ Since 'ggplot2' is used, additional plotting parameters can be easily added to t
 \dontrun{
 plot_flights(sample_trips)
 }
+
 }
