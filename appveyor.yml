@@ -6,6 +6,10 @@ init:
 install:
   ps: Bootstrap
   
+image:
+  - Visual Studio 2019
+  - Ubuntu
+  - macOS
 
 build_script:
   - travis-tool.sh install_deps
