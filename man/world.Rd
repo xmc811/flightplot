@@ -16,4 +16,9 @@ world
 \description{
 A simple feature dataframe generated from world land and earth shapefile.
 }
+\examples{
+\dontrun{
+world
+}
+}
 \keyword{datasets}

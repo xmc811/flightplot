@@ -15,7 +15,6 @@
 #' @param water_color A string - the color used for earth. Default value is \code{"aliceblue"}.
 #' @param dom_color A string - the color used for domestic flights. Default value is \code{"#3288bd"}.
 #' @param int_color A string - the color used for international flights. Default value is \code{"#d53e4f"}.
-#' @param linetype A string - the linetype used for flight paths. Default value is \code{"solid"}.
 #' @param times_as_thickness A logical value - whether the times of flights are used as aestheic mappings for the thickness of flight paths. Default value is \code{TRUE}.
 #'
 #' @return A plot
@@ -23,7 +22,6 @@
 #' @importFrom magrittr %<>%
 #' @importFrom dplyr group_by summarise n ungroup inner_join mutate %>% select
 #' @importFrom ggplot2 ggplot geom_sf theme geom_point scale_color_manual scale_size_identity scale_x_continuous scale_y_continuous element_rect aes
-#' @importFrom ggrepel geom_text_repel
 #' @importFrom rlang .data
 #'
 #' @examples
@@ -39,7 +37,6 @@ plot_flights <- function(trips,
                          water_color = "aliceblue",
                          dom_color = "#3288bd",
                          int_color = "#d53e4f",
-                         linetype = "solid",
                          times_as_thickness = TRUE) {
 
     colnames(trips) <- c("Departure", "Arrival")
@@ -104,11 +101,12 @@ plot_flights <- function(trips,
         geom_sf(data = sf::st_as_sf(routes),
                 mapping = aes(size = n/2,
                               color = factor(.data$int)),
+                linetype = "solid",
                 alpha = 0.5) +
         geom_point(data = my_airports,
                    aes(x = .data$Longtitude,
                        y = .data$Latitude)) +
-        geom_text_repel(data = my_airports,
+        ggrepel::geom_text_repel(data = my_airports,
                         aes(x = .data$Longtitude,
                             y = .data$Latitude,
                             label = .data$IATA)) +

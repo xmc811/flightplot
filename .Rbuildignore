@@ -2,3 +2,8 @@
 ^\.Rproj\.user$
 ^appveyor\.yml$
 ^\.travis\.yml$
+images/*
+^README\.md$
+LICENSE
+.git/*
+

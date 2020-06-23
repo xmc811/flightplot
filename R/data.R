@@ -46,7 +46,10 @@
 #'
 #' @source <https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/>
 #' @format A simple feature dataframe.
+#'
 #' @examples
-#'   world
+#' \dontrun{
+#' world
+#' }
 
 "world"
