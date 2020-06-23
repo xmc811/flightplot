@@ -20,3 +20,28 @@ library(flightplot)
 
 
 ### Examples
+
+The main plot function `plot_flights` accepts a two-column dataframe as input, with one column as departure airports and the other as arrival. The values of airports should be IATA 3-letter codes. `sample_trips` is an example dataframe that can be readily used for plotting. The columns names can be any valid names.
+
+```R
+sample_trips
+```
+
+| Departure | Arrival |
+|-----|-----|
+| LAX | IAH |
+| IAH | LAX |
+| SFO | IAH |
+| IAH | ORL |
+| ORL | IAH |
+| IAH | DEN |
+| DEN | IAH |
+| ... | ... |
+
+
+To call the main plot function:
+
+```R
+plot_flights(sample_trips)
+```
+
