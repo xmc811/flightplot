@@ -47,3 +47,23 @@ plot_flights(sample_trips)
 
 <img src=https://github.com/xmc811/flightplot/blob/master/images/plot_1.png/>
 
+The map can be set to be cropped to presets:
+
+```R
+plot_flights(sample_trips, crop = "48States")
+```
+
+<img src=https://github.com/xmc811/flightplot/blob/master/images/plot_2.png/>
+
+Some additional parameters can be adjusted:
+
+```R
+plot_flights(sample_trips,
+             crop = "48States", 
+             land_color = "#fdae6b", 
+             water_color = "#9ecae1", 
+             dom_color = "white", 
+             int_color = "black", 
+             times_as_thickness = FALSE))
+```
+
