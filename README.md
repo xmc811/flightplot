@@ -44,16 +44,18 @@ To call the main plot function:
 ```R
 plot_flights(sample_trips)
 ```
-
+<p align="center">
 <img src=https://github.com/xmc811/flightplot/blob/master/images/plot_1.png/>
+</p>
 
 The map can be set to be cropped to presets:
 
 ```R
 plot_flights(sample_trips, crop = "48States")
 ```
-
+<p align="center">
 <img src=https://github.com/xmc811/flightplot/blob/master/images/plot_2.png/>
+</p>
 
 Some additional parameters can be adjusted:
 
@@ -66,4 +68,7 @@ plot_flights(sample_trips,
              int_color = "black", 
              times_as_thickness = FALSE))
 ```
+<p align="center">
+<img src=https://github.com/xmc811/flightplot/blob/master/images/plot_3.png/>
+</p>
 
