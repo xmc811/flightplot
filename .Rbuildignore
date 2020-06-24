@@ -4,6 +4,5 @@
 ^\.travis\.yml$
 images/*
 ^README\.md$
-LICENSE
 .git/*
 
