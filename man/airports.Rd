@@ -33,6 +33,8 @@ airports
 A dataframe with basic information of airports all over the world
 }
 \examples{
-  airports
+\dontrun{
+airports
+}
 }
 \keyword{datasets}

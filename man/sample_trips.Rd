@@ -18,6 +18,8 @@ sample_trips
 A two-column dataframe with start and end airports of flights. The dataframe can be readily used as input for the main plot function.
 }
 \examples{
-  sample_trips
+\dontrun{
+sample_trips
+}
 }
 \keyword{datasets}
