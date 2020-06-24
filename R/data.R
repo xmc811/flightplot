@@ -23,7 +23,10 @@
 #' \item{Source}{Source of this data. "OurAirports" for data sourced from \href{http://ourairports.com/data/}{OurAirports}, "Legacy" for old data not matched to OurAirports (mostly DAFIF), "User" for unverified user contributions. }
 #' }
 #' @examples
-#'   airports
+#' \dontrun{
+#' airports
+#' }
+
 "airports"
 
 #' Sample Trip Dataset
@@ -36,7 +39,9 @@
 #' \item{Arrival}{IATA code for arrival airports.}
 #' }
 #' @examples
-#'   sample_trips
+#' \dontrun{
+#' sample_trips
+#' }
 
 "sample_trips"
 
