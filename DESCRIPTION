@@ -25,6 +25,8 @@ Collate:
         "globals.R"
         "helpers.R"
         "main.R"
+URL: https://github.com/xmc811/flightplot
+BugReports: https://github.com/xmc811/flightplot/issues
 Suggests:
 RoxygenNote: 7.1.0
 Encoding: UTF-8
