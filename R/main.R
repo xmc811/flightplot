@@ -26,7 +26,7 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' plot_flights(sample_trips)
+#' plot_flights(sample_trips[1:20,])
 #'
 #' @export
 
