@@ -21,13 +21,11 @@
 #'
 #' @importFrom magrittr %<>%
 #' @importFrom dplyr group_by summarise n ungroup inner_join mutate %>% select
-#' @importFrom ggplot2 ggplot geom_sf theme geom_point scale_color_manual scale_size_identity scale_x_continuous scale_y_continuous element_rect aes
+#' @importFrom ggplot2 ggplot geom_sf theme geom_point scale_color_manual scale_size_identity scale_x_continuous scale_y_continuous element_rect aes alpha
 #' @importFrom rlang .data
 #'
 #' @examples
-#' \dontrun{
 #' plot_flights(sample_trips)
-#' }
 #'
 #' @export
 
@@ -101,8 +99,7 @@ plot_flights <- function(trips,
         geom_sf(data = sf::st_as_sf(routes),
                 mapping = aes(size = n/2,
                               color = factor(.data$int)),
-                linetype = "solid",
-                alpha = 0.5) +
+                linetype = "solid") +
         geom_point(data = my_airports,
                    aes(x = .data$Longtitude,
                        y = .data$Latitude)) +
@@ -110,8 +107,9 @@ plot_flights <- function(trips,
                         aes(x = .data$Longtitude,
                             y = .data$Latitude,
                             label = .data$IATA)) +
-        scale_color_manual(values = c(dom_color,
-                                      int_color)) +
+        scale_color_manual(values = alpha(c(dom_color,
+                                            int_color),
+                                          0.5)) +
         scale_size_identity() +
         scale_x_continuous(limits = long_limits,
                            expand = c(0, 0)) +

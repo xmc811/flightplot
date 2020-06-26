@@ -40,8 +40,6 @@ The \code{plot_flights} function use 'ggplot2' to plot flight paths on a world m
 Since 'ggplot2' is used, additional plotting parameters can be easily added to the result.
 }
 \examples{
-\dontrun{
 plot_flights(sample_trips)
-}
 
 }
