@@ -11,6 +11,7 @@ plot_flights(
   water_color = "aliceblue",
   dom_color = "#3288bd",
   int_color = "#d53e4f",
+  alpha = 0.5,
   times_as_thickness = TRUE
 )
 }
@@ -29,6 +30,8 @@ The default value is \code{TRUE}.}
 \item{dom_color}{A string - the color used for domestic flights. Default value is \code{"#3288bd"}.}
 
 \item{int_color}{A string - the color used for international flights. Default value is \code{"#d53e4f"}.}
+
+\item{alpha}{A double number - 0 to 1. The transparency (alpha) of flight paths. Default value is \code{0.5}.}
 
 \item{times_as_thickness}{A logical value - whether the times of flights are used as aestheic mappings for the thickness of flight paths. Default value is \code{TRUE}.}
 }

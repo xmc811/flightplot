@@ -15,13 +15,14 @@
 #' @param water_color A string - the color used for earth. Default value is \code{"aliceblue"}.
 #' @param dom_color A string - the color used for domestic flights. Default value is \code{"#3288bd"}.
 #' @param int_color A string - the color used for international flights. Default value is \code{"#d53e4f"}.
+#' @param alpha A double number - 0 to 1. The transparency (alpha) of flight paths. Default value is \code{0.5}.
 #' @param times_as_thickness A logical value - whether the times of flights are used as aestheic mappings for the thickness of flight paths. Default value is \code{TRUE}.
 #'
 #' @return A plot
 #'
 #' @importFrom magrittr %<>%
 #' @importFrom dplyr group_by summarise n ungroup inner_join mutate %>% select
-#' @importFrom ggplot2 ggplot geom_sf theme geom_point scale_color_manual scale_size_identity scale_x_continuous scale_y_continuous element_rect aes alpha
+#' @importFrom ggplot2 ggplot geom_sf theme geom_point scale_color_manual scale_size_identity scale_x_continuous scale_y_continuous element_rect aes alpha labs
 #' @importFrom rlang .data
 #'
 #' @examples
@@ -35,6 +36,7 @@ plot_flights <- function(trips,
                          water_color = "aliceblue",
                          dom_color = "#3288bd",
                          int_color = "#d53e4f",
+                         alpha = 0.5,
                          times_as_thickness = TRUE) {
 
     colnames(trips) <- c("Departure", "Arrival")
@@ -96,7 +98,7 @@ plot_flights <- function(trips,
     ggplot() +
         geom_sf(data = world, fill = land_color, size = 0) +
         theme(panel.background = element_rect(fill = water_color)) +
-        geom_sf(data = sf::st_as_sf(routes),
+        geom_sf(data = routes,
                 mapping = aes(size = n/2,
                               color = factor(.data$int)),
                 linetype = "solid") +
@@ -109,12 +111,13 @@ plot_flights <- function(trips,
                             label = .data$IATA)) +
         scale_color_manual(values = alpha(c(dom_color,
                                             int_color),
-                                          0.5)) +
+                                          alpha)) +
         scale_size_identity() +
         scale_x_continuous(limits = long_limits,
                            expand = c(0, 0)) +
         scale_y_continuous(limits = lat_limits,
                            expand = c(0, 0)) +
+        labs(x = NULL, y = NULL) +
         theme(legend.position = "none")
 
 }

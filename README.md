@@ -66,7 +66,8 @@ plot_flights(sample_trips,
              water_color = "#9ecae1", 
              dom_color = "white", 
              int_color = "black", 
-             times_as_thickness = FALSE))
+             alpha = 1,
+             times_as_thickness = FALSE)
 ```
 <p align="center">
 <img src=https://github.com/xmc811/flightplot/blob/master/images/plot_3.png/>
