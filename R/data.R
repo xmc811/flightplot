@@ -23,9 +23,7 @@
 #' \item{Source}{Source of this data. "OurAirports" for data sourced from \href{http://ourairports.com/data/}{OurAirports}, "Legacy" for old data not matched to OurAirports (mostly DAFIF), "User" for unverified user contributions. }
 #' }
 #' @examples
-#' \dontrun{
 #' airports
-#' }
 
 "airports"
 
@@ -39,9 +37,7 @@
 #' \item{Arrival}{IATA code for arrival airports.}
 #' }
 #' @examples
-#' \dontrun{
 #' sample_trips
-#' }
 
 "sample_trips"
 
@@ -53,8 +49,6 @@
 #' @format A simple feature dataframe.
 #'
 #' @examples
-#' \dontrun{
-#' world
-#' }
+#' sf::st_as_sf(world)
 
 "world"

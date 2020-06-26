@@ -16,8 +16,6 @@ A two-column dataframe
 Helper function to reorder the values in the input flight dataframe.
 }
 \examples{
-\dontrun{
 arrange_path(sample_trips)
-}
 
 }

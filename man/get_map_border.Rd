@@ -23,8 +23,7 @@ small area, the map needs to be cropped based on the coordinates of airports\cr
 used. This function generates the coordinate limits of the cropped map.
 }
 \examples{
-\dontrun{
-arrange_path(sample_trips)
-}
+get_map_border(c(-20,30,60,85), type = "lat")
+get_map_border(c(-10,0,10,40), type = "long", padding_ratio = 0.2)
 
 }

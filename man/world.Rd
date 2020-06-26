@@ -17,8 +17,6 @@ world
 A simple feature dataframe generated from world land and earth shapefile.
 }
 \examples{
-\dontrun{
-world
-}
+sf::st_as_sf(world)
 }
 \keyword{datasets}

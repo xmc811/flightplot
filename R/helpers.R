@@ -8,9 +8,7 @@
 #'@return A two-column dataframe
 #'
 #' @examples
-#' \dontrun{
 #' arrange_path(sample_trips)
-#' }
 #'
 #' @export
 
@@ -42,9 +40,8 @@ arrange_path <- function(df) {
 #'@return A two-column dataframe
 #'
 #' @examples
-#' \dontrun{
-#' arrange_path(sample_trips)
-#' }
+#' get_map_border(c(-20,30,60,85), type = "lat")
+#' get_map_border(c(-10,0,10,40), type = "long", padding_ratio = 0.2)
 #'
 #' @export
 
