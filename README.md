@@ -10,13 +10,22 @@ R Package to Plot the Paths of Flights on the World Map
 Please use the following code to install and load the package:
 
 ```R
+install.packages("flightplot")
+library(flightplot)
+```
+
+If you would like to install the most up-to-date version on GitHub:
+
+```R
 if (!require("devtools")) {
   install.packages("devtools")
 }
 
-install_github("xmc811/flightplot", ref = "development")
+install_github("xmc811/flightplot")
 library(flightplot)
 ```
+
+Please use GitHub Issues to report bugs or leave any comments and suggestions. Contributions through pull requests are also welcomed!
 
 
 ### Examples
